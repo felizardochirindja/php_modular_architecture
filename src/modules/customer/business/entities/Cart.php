@@ -2,12 +2,22 @@
 
 namespace DDD\Modules\Customer\Business\Entities;
 
-final class Cart
+final readonly class Cart
 {
-    public string $id;
+    /** @param CartItem[] $items */
+    private ?array $items;
 
-    /** @param CartItem[] $item */
     public function __construct(
-        public array $items,
+        public ?string $id,
     ) {}
+
+    public function addItem(CartItem $item): void
+    {
+        array_push($this->items, $item);
+    }
+
+    public function showItems(): array
+    {
+        return $this->items;
+    }
 }
