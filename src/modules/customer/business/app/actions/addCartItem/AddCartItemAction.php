@@ -13,7 +13,7 @@ final class AddCartItemAction
         private GetCartByIdRepo | GetItemByIdRepo | CreateCartItemRepo $repo,
     ) {}
 
-    public function execute(int $itemId, int $cartId): mixed
+    public function execute(int $itemId, int $cartId): bool
     {
         $item = $this->repo->getItemById($itemId);
 
@@ -27,6 +27,6 @@ final class AddCartItemAction
             throw new DomainException("cart does not exist");
         }
 
-        $this->repo->createCartItem($cartId, $itemId);
+        return $this->repo->createCartItem($cart->id, $item->id);
     }
 }
