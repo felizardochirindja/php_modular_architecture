@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD\Modules\Catalog\Business\App\Actions\ShowProducts;
+namespace DDD\Modules\Catalog\Business\App\Actions\showProductsByCategory;
 
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Category\ReadCategoryByIdRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\CountProductsRepo;
@@ -34,7 +34,7 @@ final class ShowProductsByCategoryAction
         $category = $this->repo->readCategoryById($categoryId);
 
         if (!$category) {
-            throw new DomainException("category with id of" . $categoryId . 'does not exist!');
+            throw new DomainException("category with id of $categoryId does not exist!");
         }
 
         $products = $this->repo->readProductsByCategoryId($categoryId, $page, $productsPerPage);
