@@ -23,6 +23,7 @@
         "phpunit/phpunit": "10.0"
     },
     "scripts": {
-        "test_catalog": "php82 .\\vendor\\bin\\phpunit .\\src\\modules\\catalog\\tests\\ --colors=always --testdox"
+        "test_catalog": "php82 .\\vendor\\bin\\phpunit .\\src\\modules\\catalog\\tests\\ --colors=always --testdox",
+        "test_customer": "php82 .\\vendor\\bin\\phpunit .\\src\\modules\\customer\\tests\\ --colors=always --testdox"
     }
 }
