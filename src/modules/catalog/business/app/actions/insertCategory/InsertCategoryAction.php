@@ -21,7 +21,7 @@ final class InsertCategoryAction
             throw new DomainException("category $name already exists");
         }
 
-        $category = new Category($name, $description);
+        $category = Category::createWihoutId($name, $description);
 
         $createdCategory = $this->repo->createCategory($category->name, $category->description);
 
