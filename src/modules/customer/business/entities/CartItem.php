@@ -10,5 +10,6 @@ final class CartItem
         public string $name,
         public float $price,
         public int $categoryId,
+        public int $quantity,
     ) {}
 }
