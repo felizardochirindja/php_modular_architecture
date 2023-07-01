@@ -2,7 +2,7 @@
 
 namespace DDD\Modules\Catalog\Business\App\Ports\Repo\Category;
 
-interface ReadCategoiesRepo
+interface ReadCategoriesRepo
 {
     function readCategories(int $page, int $categoriesPerPage): array;
 }
