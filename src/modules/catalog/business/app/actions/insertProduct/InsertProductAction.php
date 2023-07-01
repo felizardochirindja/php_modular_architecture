@@ -19,21 +19,20 @@ final class InsertProductAction
         $category = $this->repo->readCategoryById($categoryId);
 
         if ($category === null) {
-            throw new Exception("category with id of" . $categoryId . 'does not exist!');
+            throw new Exception("category with id of " . $categoryId . ' does not exist!');
         }
 
-        $product = new Product($name, $price, $category);
+        $product = Product::createWithoutId($name, $price, $category);
 
-        $createdProduct = $this->repo->createProduct($product->name, $product->price, $product->category->id);
+        $createdProduct = $this->repo->createProduct($product->name, $product->price, $category->id);
 
         return new InsertProductOutput(
             $createdProduct->id,
             $createdProduct->name,
             $createdProduct->price,
-            $createdProduct->id,
-            $createdProduct->category->id,
-            $createdProduct->category->name,
-            $createdProduct->category->description,
+            $category->id,
+            $category->name,
+            $category->description,
         );
     }
 }
