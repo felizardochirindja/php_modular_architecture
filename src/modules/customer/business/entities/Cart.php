@@ -2,8 +2,6 @@
 
 namespace DDD\Modules\Customer\Business\Entities;
 
-use DDD\Modules\Catalog\Business\Types\CartStatus;
-
 final class Cart
 {
     public string $id;
@@ -11,6 +9,5 @@ final class Cart
     /** @param CartItem[] $item */
     public function __construct(
         public array $items,
-        public CartStatus $status,
     ) {}
 }
