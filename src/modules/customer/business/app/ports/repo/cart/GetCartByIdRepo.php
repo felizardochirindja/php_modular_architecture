@@ -6,5 +6,5 @@ use DDD\Modules\Customer\Business\Entities\Cart;
 
 interface GetCartByIdRepo
 {
-    function getCartByIdRepo(string $cartId): Cart;
+    function getCartByIdRepo(string $cartId): ?Cart;
 }

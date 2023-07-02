@@ -18,13 +18,13 @@ final class AddCartItemAction
         $item = $this->repo->getItemById($itemId);
 
         if (!$item) {
-            throw new DomainException("item does not exist");
+            throw new DomainException('item does not exist');
         }
 
         $cart = $this->repo->getCartByIdRepo($cartId);
 
         if (!$cart) {
-            throw new DomainException("cart does not exist");
+            throw new DomainException('cart does not exist');
         }
 
         return $this->repo->createCartItem($cart->id, $item->id);
