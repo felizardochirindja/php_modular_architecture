@@ -2,15 +2,25 @@
 
 namespace DDD\Modules\Customer\Business\Entities;
 
-use DDD\Modules\Catalog\Business\Types\Phone;
+use DDD\Modules\Customer\Business\Types\Phone;
 
 final class Customer
 {
-    public string $id;
     public Cart $cart;
-
-    public function __construct(
+    
+    private function __construct(
+        public ?string $id,
         public string $name,
         public Phone $phone,
     ) {}
+
+    public static function createWithoutId(string $name, Phone $phone): self
+    {
+        return new self(null, $name, $phone);
+    }
+
+    public static function createWithId(string $id, string $name, Phone $phone): self
+    {
+        return new self($id, $name, $phone);
+    }
 }
