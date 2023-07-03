@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD\Modules\Catalog\Business\Types;
+namespace DDD\Modules\Customer\Business\Types;
 
 final readonly class Phone
 {

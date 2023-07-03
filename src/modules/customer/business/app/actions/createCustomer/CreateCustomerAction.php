@@ -2,31 +2,38 @@
 
 namespace DDD\Modules\Customer\Business\App\Actions\CreateCustomer;
 
-use DDD\Modules\Catalog\Business\Types\Phone;
+use DDD\Modules\Customer\Business\Types\Phone;
 use DDD\Modules\Customer\Business\App\Ports\Repo\Cart\CreateCartRepo;
 use DDD\Modules\Customer\Business\App\Ports\Repo\Customer\CreateCustomerRepo;
 use DDD\Modules\Customer\Business\App\Ports\Repo\Customer\CreatePhoneRepo;
-use DDD\Modules\Customer\Business\Entities\Customer;
+use DDD\Modules\Customer\Business\App\Ports\Repo\Customer\ReadCustomerByNameRepo;
+use DomainException;
 
 final class CreateCustomerAction
 {
     public function __construct(
-        private CreateCustomerRepo | CreatePhoneRepo | CreateCartRepo $repo,
+        private CreateCustomerRepo | CreatePhoneRepo | CreateCartRepo | ReadCustomerByNameRepo $repo,
     ) {}
 
     public function execute(string $name, string $phone): CreateCustomerOutput
     {
-        $customer = new Customer($name, new Phone($phone));
+        $customer = $this->repo->readCustomerByName($name);
 
-        $createdCustomer = $this->repo->createCustomer($customer->name);
-        $this->repo->createPhone($createdCustomer->id, $customer->phone->value);
-        $this->repo->createCart($customer->id);
+        if ($customer) {
+            throw new DomainException("customer with name of {$name} already exists");
+        }
+
+        $phone = new Phone($phone);
+
+        $createdCustomer = $this->repo->createCustomer($name);
+        $this->repo->createPhone($createdCustomer->id, $phone->value);
+        $cart = $this->repo->createCart($createdCustomer->id);
 
         return new CreateCustomerOutput(
             $createdCustomer->id,
-            $customer->name,
-            $customer->phone->value,
-            $customer->cart->id,
+            $createdCustomer->name,
+            $createdCustomer->phone->value,
+            $cart->id,
         );
     }
 }
