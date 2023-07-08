@@ -6,6 +6,7 @@ use DDD\Modules\Customer\Business\App\Ports\Repo\Cart\GetCartByIdRepo;
 use DDD\Modules\Customer\Business\App\Ports\Repo\Cart\GetItemByIdRepo;
 use DDD\Modules\Customer\Business\Entities\Cart;
 use DDD\Modules\Customer\Business\Entities\CartItem;
+use DDD\Modules\Customer\Business\Types\ItemQuantity;
 use DDD\Modules\Customer\Tests\CustomerTestRepository;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -18,7 +19,7 @@ final class AddCartItemTest extends TestCase
         /** @var GetCartByIdRepo|GetItemByIdRepo|CreateCartItemRepo|MockObject $repo */
         $repo = $this->createStub(CustomerTestRepository::class);
 
-        $cartItem = CartItem::createWithId('1', 'item', 50.00, '3', 5);
+        $cartItem = CartItem::createWithId('1', 'item', 50.00, '3', new ItemQuantity(5));
 
         $repo
             ->method('getItemById')
@@ -65,7 +66,7 @@ final class AddCartItemTest extends TestCase
         /** @var GetCartByIdRepo|GetItemByIdRepo|MockObject $repo */
         $repo = $this->createStub(CustomerTestRepository::class);
 
-        $cartItem = CartItem::createWithId('1', 'cart item', 50.00, 1, 2);
+        $cartItem = CartItem::createWithId('1', 'cart item', 50.00, 1, new ItemQuantity(5));
 
         $repo
             ->method('getItemById')
