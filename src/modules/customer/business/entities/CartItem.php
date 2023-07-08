@@ -2,6 +2,8 @@
 
 namespace DDD\Modules\Customer\Business\Entities;
 
+use DDD\Modules\Customer\Business\Types\ItemQuantity;
+
 final readonly class CartItem
 {
     private function __construct(
@@ -9,16 +11,21 @@ final readonly class CartItem
         public string $name,
         public float $price,
         public int $categoryId,
-        public int $quantity,
+        private ItemQuantity $quantity,
     ) {}
 
-    public static function createWithoutId(string $name, float $price, string $categoryId, int $quantity): self
+    public static function createWithoutId(string $name, float $price, string $categoryId, ItemQuantity $quantity): self
     {
         return new self(null, $name, $price, $categoryId, $quantity);
     }
 
-    public static function createWithId(string $id, string $name, float $price, string $categoryId, int $quantity): self
+    public static function createWithId(string $id, string $name, float $price, string $categoryId, ItemQuantity $quantity): self
     {
         return new self($id, $name, $price, $categoryId, $quantity);
+    }
+
+    public function getQuantity(): int
+    {
+        return $this->quantity->quantity;
     }
 }
