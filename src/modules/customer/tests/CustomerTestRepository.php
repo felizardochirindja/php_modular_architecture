@@ -6,6 +6,7 @@ use DDD\Modules\Customer\Business\App\Ports\Repo\Cart\CreateCartItemRepo;
 use DDD\Modules\Customer\Business\App\Ports\Repo\Cart\CreateCartRepo;
 use DDD\Modules\Customer\Business\App\Ports\Repo\Cart\GetCartByIdRepo;
 use DDD\Modules\Customer\Business\App\Ports\Repo\Cart\GetItemByIdRepo;
+use DDD\Modules\Customer\Business\App\Ports\Repo\Cart\UpdateCartItemQuantityRepo;
 use DDD\Modules\Customer\Business\App\Ports\Repo\Customer\CreateCustomerRepo;
 use DDD\Modules\Customer\Business\App\Ports\Repo\Customer\CreatePhoneRepo;
 use DDD\Modules\Customer\Business\App\Ports\Repo\Customer\ReadCustomerByNameRepo;
@@ -17,5 +18,6 @@ abstract class CustomerTestRepository implements
     CreateCustomerRepo,
     CreatePhoneRepo,
     CreateCartRepo,
-    ReadCustomerByNameRepo
+    ReadCustomerByNameRepo,
+    UpdateCartItemQuantityRepo
 {}
