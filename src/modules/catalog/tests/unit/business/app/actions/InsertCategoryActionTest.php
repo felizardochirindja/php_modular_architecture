@@ -5,7 +5,7 @@ use DDD\Modules\Catalog\Business\App\Actions\InsertCategory\InsertCategoryOutput
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Category\CreateCategoryRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Category\ReadCategoryByNameRepo;
 use DDD\Modules\Catalog\Business\Entities\Category;
-use DDD\Modules\Catalog\Tests\CatalogTestRepository;
+use DDD\Modules\Catalog\Tests\Unit\CatalogTestRepository;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

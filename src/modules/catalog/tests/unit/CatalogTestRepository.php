@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD\Modules\Catalog\Tests;
+namespace DDD\Modules\Catalog\Tests\Unit;
 
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Category\CountCategoriesRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Category\CreateCategoryRepo;

@@ -3,7 +3,7 @@
 use DDD\Modules\Catalog\Business\App\Actions\ShowProducts\ShowProductsAction;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\CountProductsRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\ReadProductsRepo;
-use DDD\Modules\Catalog\Tests\CatalogTestRepository;
+use DDD\Modules\Catalog\Tests\Unit\CatalogTestRepository;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 

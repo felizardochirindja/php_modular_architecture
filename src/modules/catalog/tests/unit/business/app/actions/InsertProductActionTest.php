@@ -6,7 +6,7 @@ use DDD\Modules\Catalog\Business\App\Ports\Repo\Category\ReadCategoryByIdRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\CreateProductRepo;
 use DDD\Modules\Catalog\Business\Entities\Category;
 use DDD\Modules\Catalog\Business\Entities\Product;
-use DDD\Modules\Catalog\Tests\CatalogTestRepository;
+use DDD\Modules\Catalog\Tests\Unit\CatalogTestRepository;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
