@@ -9,7 +9,9 @@ use DDD\Modules\Customer\Business\App\Ports\Repo\Cart\GetItemByIdRepo;
 use DDD\Modules\Customer\Business\App\Ports\Repo\Cart\UpdateCartItemQuantityRepo;
 use DDD\Modules\Customer\Business\App\Ports\Repo\Customer\CreateCustomerRepo;
 use DDD\Modules\Customer\Business\App\Ports\Repo\Customer\CreatePhoneRepo;
+use DDD\Modules\Customer\Business\App\Ports\Repo\Customer\ReadCustomerByIdRepo;
 use DDD\Modules\Customer\Business\App\Ports\Repo\Customer\ReadCustomerByNameRepo;
+use DDD\Modules\Customer\Business\App\Ports\Repo\Customer\UpdateCustomerRepo;
 
 abstract class CustomerTestRepository implements
     GetCartByIdRepo,
@@ -19,5 +21,7 @@ abstract class CustomerTestRepository implements
     CreatePhoneRepo,
     CreateCartRepo,
     ReadCustomerByNameRepo,
-    UpdateCartItemQuantityRepo
+    UpdateCartItemQuantityRepo,
+    UpdateCustomerRepo,
+    ReadCustomerByIdRepo
 {}
