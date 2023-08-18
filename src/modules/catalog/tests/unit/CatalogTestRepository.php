@@ -9,8 +9,10 @@ use DDD\Modules\Catalog\Business\App\Ports\Repo\Category\ReadCategoryByIdRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Category\ReadCategoryByNameRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\CountProductsRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\CreateProductRepo;
+use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\ReadProductByIdRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\ReadProductsByCategoryIdRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\ReadProductsRepo;
+use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\RemoveProductRepo;
 
 abstract class CatalogTestRepository implements
     ReadCategoryByNameRepo,
@@ -21,5 +23,7 @@ abstract class CatalogTestRepository implements
     CountCategoriesRepo,
     CountProductsRepo,
     ReadProductsByCategoryIdRepo,
-    ReadProductsRepo
+    ReadProductsRepo,
+    RemoveProductRepo,
+    ReadProductByIdRepo
 {}
