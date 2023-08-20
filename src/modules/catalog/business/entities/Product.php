@@ -2,6 +2,8 @@
 
 namespace DDD\Modules\Catalog\Business\Entities;
 
+use DDD\Modules\Catalog\Business\Types\ProductPrice;
+
 final readonly class Product
 {
     private function __construct(
@@ -11,13 +13,13 @@ final readonly class Product
         public Category $category,
     ) {}
 
-    public static function createWithoutId(string $name, float $price, Category $category): self
+    public static function createWithoutId(string $name, ProductPrice $price, Category $category): self
     {
-        return new self(null, $name, $price, $category);
+        return new self(null, $name, $price->price, $category);
     }
 
-    public static function createWith(string $id, string $name, float $price, Category $category): self
+    public static function createWith(string $id, string $name, ProductPrice $price, Category $category): self
     {
-        return new self($id, $name, $price, $category);
+        return new self($id, $name, $price->price, $category);
     }
 }

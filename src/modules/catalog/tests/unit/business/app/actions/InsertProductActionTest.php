@@ -6,6 +6,7 @@ use DDD\Modules\Catalog\Business\App\Ports\Repo\Category\ReadCategoryByIdRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\CreateProductRepo;
 use DDD\Modules\Catalog\Business\Entities\Category;
 use DDD\Modules\Catalog\Business\Entities\Product;
+use DDD\Modules\Catalog\Business\Types\ProductPrice;
 use DDD\Modules\Catalog\Tests\Unit\CatalogTestRepository;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -19,7 +20,7 @@ final class InsertProductActionTest extends TestCase
         $repo = $this->createStub(CatalogTestRepository::class);
         
         $category = Category::createWithId("2", "category", "description");
-        $product = Product::createWith("1", "product", 50.00, $category);
+        $product = Product::createWith("1", "product", new ProductPrice(50.00), $category);
         
         $repo
             ->method("createProduct")

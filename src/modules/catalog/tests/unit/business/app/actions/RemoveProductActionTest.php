@@ -5,6 +5,7 @@ use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\ReadProductByIdRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\RemoveProductRepo;
 use DDD\Modules\Catalog\Business\Entities\Category;
 use DDD\Modules\Catalog\Business\Entities\Product;
+use DDD\Modules\Catalog\Business\Types\ProductPrice;
 use DDD\Modules\Catalog\Tests\Unit\CatalogTestRepository;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -18,7 +19,7 @@ class RemoveProductActionTest extends TestCase
         $repo = $this->createStub(CatalogTestRepository::class);
 
         $product = Product::createWithoutId(
-            '1', 50.00, 
+            '1', new ProductPrice(50.00), 
             Category::createWihoutId('category', 'description')
         );
 
@@ -46,7 +47,7 @@ class RemoveProductActionTest extends TestCase
         $action = new RemoveProductAction($repo);
 
         $product = Product::createWith(
-            '1', 'product', 50.00,
+            '1', 'product', new ProductPrice(50.00),
             Category::createWithId('2', 'category', 'description')
         );
 

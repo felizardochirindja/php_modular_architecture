@@ -6,6 +6,7 @@ use DDD\Modules\Catalog\Business\App\Actions\InsertProduct\InsertProductOutput;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Category\ReadCategoryByIdRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\CreateProductRepo;
 use DDD\Modules\Catalog\Business\Entities\Product;
+use DDD\Modules\Catalog\Business\Types\ProductPrice;
 use Exception;
 
 final class InsertProductAction
@@ -22,7 +23,7 @@ final class InsertProductAction
             throw new Exception("category with id of " . $categoryId . ' does not exist!');
         }
 
-        $product = Product::createWithoutId($name, $price, $category);
+        $product = Product::createWithoutId($name, new ProductPrice(50.00), $category);
 
         $createdProduct = $this->repo->createProduct($product->name, $product->price, $category->id);
 
