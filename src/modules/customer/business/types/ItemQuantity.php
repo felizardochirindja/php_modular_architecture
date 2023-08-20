@@ -4,7 +4,7 @@ namespace DDD\Modules\Customer\Business\Types;
 
 use DomainException;
 
-class ItemQuantity
+final readonly class ItemQuantity
 {
     public function __construct(
         public int $quantity
