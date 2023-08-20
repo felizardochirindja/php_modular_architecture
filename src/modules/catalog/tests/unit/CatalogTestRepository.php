@@ -13,6 +13,7 @@ use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\ReadProductByIdRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\ReadProductsByCategoryIdRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\ReadProductsRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\RemoveProductRepo;
+use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\UpdateProductRepo;
 
 abstract class CatalogTestRepository implements
     ReadCategoryByNameRepo,
@@ -25,5 +26,6 @@ abstract class CatalogTestRepository implements
     ReadProductsByCategoryIdRepo,
     ReadProductsRepo,
     RemoveProductRepo,
-    ReadProductByIdRepo
+    ReadProductByIdRepo,
+    UpdateProductRepo
 {}
