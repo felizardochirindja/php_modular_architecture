@@ -27,7 +27,7 @@ final class ShowCategoriesAction
         }
 
         if ($categoriesPerPage < 5) {
-            throw new DomainException('cannot get less than 5 products per page');
+            throw new DomainException('cannot get less than 5 categories per page');
         }
 
         $categories = $this->repo->readCategories($page, $categoriesPerPage);
