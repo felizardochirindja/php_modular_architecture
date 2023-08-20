@@ -11,21 +11,16 @@ final readonly class CartItem
         public string $name,
         public float $price,
         public int $categoryId,
-        private ItemQuantity $quantity,
+        public int $quantity,
     ) {}
 
     public static function createWithoutId(string $name, float $price, string $categoryId, ItemQuantity $quantity): self
     {
-        return new self(null, $name, $price, $categoryId, $quantity);
+        return new self(null, $name, $price, $categoryId, $quantity->quantity);
     }
 
     public static function createWithId(string $id, string $name, float $price, string $categoryId, ItemQuantity $quantity): self
     {
-        return new self($id, $name, $price, $categoryId, $quantity);
-    }
-
-    public function getQuantity(): int
-    {
-        return $this->quantity->quantity;
+        return new self($id, $name, $price, $categoryId, $quantity->quantity);
     }
 }
