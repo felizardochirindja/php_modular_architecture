@@ -32,4 +32,26 @@ class RemoveProductActionTest extends TestCase
 
         $this->assertTrue($result);
     }
+
+    /** @test */
+    public function itShouldThrowExceptionIfProductDoesNotExist()
+    {
+        /** @var ReadProductByIdRepo|MockObject $repo */
+        $repo = $this->createStub(ReadProductByIdRepo::class);
+
+        $repo
+            ->method('readProductById')
+            ->willReturn(null);
+
+        $action = new RemoveProductAction($repo);
+
+        $product = Product::createWith(
+            '1', 'product', 50.00,
+            Category::createWithId('2', 'category', 'description')
+        );
+
+        $this->expectException(DomainException::class);
+
+        $action->execute($product->id, $product);
+    }
 }
