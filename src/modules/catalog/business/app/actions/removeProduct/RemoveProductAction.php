@@ -6,7 +6,7 @@ use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\ReadProductByIdRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\RemoveProductRepo;
 use DomainException;
 
-class RemoveProductAction
+final class RemoveProductAction
 {
     public function __construct(
         private RemoveProductRepo|ReadProductByIdRepo $repo
