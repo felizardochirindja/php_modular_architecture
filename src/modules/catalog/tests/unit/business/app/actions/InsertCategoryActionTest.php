@@ -49,7 +49,6 @@ final class InsertCategoryActionTest extends TestCase
 
         $action = new InsertCategoryAction($repo);
 
-        /** @var InsertCategoryOutput $output */
         $actualOutput = $action->execute($category->name, $category->description);
 
         $expectedOutput = new InsertCategoryOutput($category->id, $category->name, $category->description);
