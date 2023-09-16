@@ -4,7 +4,8 @@ namespace DDD\Modules\Catalog\Business\App\Actions\updateProduct;
 
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\ReadProductByIdRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\UpdateProductRepo;
-use DDD\Modules\Catalog\Business\Entities\Product;
+use DDD\Modules\Catalog\Business\App\Actions\updateProduct\UpdateProductInput;
+use DDD\Modules\Catalog\Business\App\Actions\updateProduct\UpdateProductOutput;
 use DomainException;
 
 final class UpdateProductAction
@@ -13,25 +14,24 @@ final class UpdateProductAction
         private ReadProductByIdRepo|UpdateProductRepo $repo
     ){}
 
-    public function execute(string $productId, Product $product)
+    public function execute(UpdateProductInput $input): UpdateProductOutput
     {
-        $product = $this->repo->readProductById($productId);
+        $product = $this->repo->readProductById($input->productId);
 
         if (!$product) {
-            throw new DomainException("product with id of $productId does not exist!");
+            throw new DomainException("product with id of $input->productId does not exist!");
         }
 
-        $updatedProduct = $this->repo->updateProduct($productId, $product);
+        $updatedProduct = $this->repo->updateProduct($input->productId, $product);
+        $category = $updatedProduct->category;
 
-        $output = new UpdateProductOutput(
+        return new UpdateProductOutput(
             $updatedProduct->id,
             $updatedProduct->name,
             $updatedProduct->price,
-            $updatedProduct->category->id,
-            $updatedProduct->category->name,
-            $updatedProduct->category->description,
+            $category->id,
+            $category->name,
+            $category->description,
         );
-
-        return $output;
     }
 }
