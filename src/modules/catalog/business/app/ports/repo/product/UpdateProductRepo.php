@@ -6,5 +6,5 @@ use DDD\Modules\Catalog\Business\Entities\Product;
 
 interface UpdateProductRepo
 {
-    public function updateProduct(string $productId, Product $product);
+    public function updateProduct(string $productId, Product $product): Product;
 }
