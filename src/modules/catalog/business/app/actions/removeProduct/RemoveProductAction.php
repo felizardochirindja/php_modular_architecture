@@ -20,8 +20,6 @@ final class RemoveProductAction
             throw new DomainException("product with id of $productId does not exist!");
         }
 
-        $this->repo->removeProduct($productId);
-
-        return true;
+        return $this->repo->removeProduct($productId);
     }
 }
