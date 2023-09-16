@@ -12,18 +12,18 @@ use Exception;
 final class InsertProductAction
 {
     public function __construct(
-        private CreateProductRepo | ReadCategoryByIdRepo $repo,
+        private CreateProductRepo|ReadCategoryByIdRepo $repo,
     ) {}
 
     public function execute(string $name, float $price, string $categoryId): InsertProductOutput
     {
         $category = $this->repo->readCategoryById($categoryId);
 
-        if ($category === null) {
+        if (!$category) {
             throw new Exception("category with id of " . $categoryId . ' does not exist!');
         }
 
-        $product = Product::createWithoutId($name, new ProductPrice(50.00), $category);
+        $product = Product::createWithoutId($name, new ProductPrice($price), $category);
 
         $createdProduct = $this->repo->createProduct($product->name, $product->price, $category->id);
 
