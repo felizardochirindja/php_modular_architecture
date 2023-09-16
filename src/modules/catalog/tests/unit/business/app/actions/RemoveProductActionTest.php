@@ -27,6 +27,10 @@ class RemoveProductActionTest extends TestCase
             ->method('readProductById')
             ->willReturn($product);
 
+        $repo
+            ->method('removeProduct')
+            ->willReturn(true);
+
         $action = new RemoveProductAction($repo);
 
         $result = $action->execute(1);
