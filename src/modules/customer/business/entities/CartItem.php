@@ -10,7 +10,7 @@ final readonly class CartItem
         public ?string $id,
         public string $name,
         public float $price,
-        public int $categoryId,
+        public string $categoryId,
         public int $quantity,
     ) {}
 
