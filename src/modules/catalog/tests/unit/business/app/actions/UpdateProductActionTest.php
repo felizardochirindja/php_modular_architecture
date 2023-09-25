@@ -1,6 +1,7 @@
 <?php
 
 use DDD\Modules\Catalog\Business\App\Actions\updateProduct\UpdateProductAction;
+use DDD\Modules\Catalog\Business\App\Actions\updateProduct\UpdateProductInput;
 use DDD\Modules\Catalog\Business\App\Actions\updateProduct\UpdateProductOutput;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\ReadProductByIdRepo;
 use DDD\Modules\Catalog\Business\App\Ports\Repo\Product\UpdateProductRepo;
@@ -34,7 +35,12 @@ class UpdateProductActionTest extends TestCase
 
         $action = new UpdateProductAction($repo);
 
-        $output = $action->execute($product->id, $product);
+        $output = $action->execute(new UpdateProductInput(
+            $product->id,
+            $product->name,
+            $product->price,
+            $product->category->id,
+        ));
 
         $expectedOutput = new UpdateProductOutput(
             $product->id,
@@ -67,6 +73,11 @@ class UpdateProductActionTest extends TestCase
 
         $this->expectException(DomainException::class);
 
-        $action->execute($product->id, $product);
+        $action->execute(new UpdateProductInput(
+            $product->id,
+            $product->name,
+            $product->price,
+            $product->category->id,
+        ));
     }
 }
